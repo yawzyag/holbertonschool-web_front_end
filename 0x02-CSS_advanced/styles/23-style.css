@@ -317,7 +317,6 @@ ul.row {
   padding: 0.5rem;
 }
 
-
 .col-1-3 {
   width: 33.33%;
 }
@@ -336,16 +335,22 @@ h6 {
   font-weight: var(--font-weight-bold);
 }
 
+[data-section-theme="dark"] {
+  --text-color: var(--color-white);
+  --section-title-color: var(--color-white);
+  background-color: var(--color-black);
+}
+
 .footer-address {
-    color: var(--text-color);
+  color: var(--text-color);
 }
 
 .social-link {
-    display: block;
+  display: block;
 }
 
-.social-link svg {
-    fill: var(--text-color);
+.social-link > svg {
+  fill: var(--text-color);
 }
 
 .footer-copyright {
@@ -360,10 +365,4 @@ h6 {
 
 .footer ul {
   text-align: right;
-}
-
-[data-section-theme="dark"] {
-  --text-color: var(--color-white);
-  --section-title-color: var(--color-white);
-  background-color: var(--color-black);
 }
