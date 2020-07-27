@@ -239,6 +239,10 @@ a:active {
   background-color: var(--color-light-grey);
 }
 
+.header {
+    padding: var(--header-padding);
+}
+
 .header-logo {
     position: var(--header-logo-position);
 }
