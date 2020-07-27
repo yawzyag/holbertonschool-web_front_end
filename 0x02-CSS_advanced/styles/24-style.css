@@ -313,19 +313,19 @@ ul.row {
 }
 
 .card-services .card-title {
-    margin: 0;
+  margin: 0;
 }
 
 .card-services a {
-    display: block;
-    padding: 2rem;
-    background-color: var(--color-light-grey);
+  display: block;
+  padding: 2rem;
+  background-color: var(--color-light-grey);
 }
 
 .card-services a:hover {
-    color: var(--color-white);
-    background-color: var(--color-primary);
-    text-decoration: none;
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  text-decoration: none;
 }
 
 [class*="col-"] {
@@ -351,6 +351,12 @@ h6 {
   font-weight: var(--font-weight-bold);
 }
 
+[data-section-theme="dark"] {
+  --text-color: var(--color-white);
+  --section-title-color: var(--color-white);
+  background-color: var(--color-black);
+}
+
 .footer-address {
   color: var(--text-color);
 }
@@ -359,7 +365,7 @@ h6 {
   display: block;
 }
 
-.social-link svg {
+.social-link > svg {
   fill: var(--text-color);
 }
 
@@ -375,10 +381,4 @@ h6 {
 
 .footer ul {
   text-align: right;
-}
-
-[data-section-theme="dark"] {
-  --text-color: var(--color-white);
-  --section-title-color: var(--color-white);
-  background-color: var(--color-black);
 }
