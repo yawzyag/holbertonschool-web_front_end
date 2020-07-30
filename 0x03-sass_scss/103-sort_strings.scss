@@ -1,0 +1,48 @@
+/* sort a list  */
+@import "103-sort_list";
+$order: "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r"
+  "s" "t" "u" "v" "w" "x" "y" "z" !default;
+
+@function compare($a, $b, $order) {
+  @if type-of($a) == "number" and type-of($b) == "number" {
+    @return $a < $b;
+  }
+
+  $a: to-lower-case($a + unquote(""));
+  $b: to-lower-case($b + unquote(""));
+
+  @for $i from 1 through min(str-length($a), str-length($b)) {
+    $char-a: str-slice($a, $i, $i);
+    $char-b: str-slice($b, $i, $i);
+
+    @if $char-a and $char-b and index($order, $char-a) != index($order, $char-b)
+    {
+      @return index($order, $char-a) < index($order, $char-b);
+    }
+  }
+
+  @return str-length($a) < str-length($b);
+}
+
+@function swap($list, $index-a, $index-b) {
+  @if abs($index-a) > length($list) or abs($index-b) > length($list) {
+    @return $list;
+  }
+  $temp: nth($list, $index-a);
+  $list: set-nth($list, $index-a, nth($list, $index-b));
+  $list: set-nth($list, $index-b, $temp);
+  @return $list;
+}
+@function sort($list, $sort-order: $order) {
+  @for $i from 1 through length($list) {
+    @for $j from $i * -1 through -1 {
+      $j: abs($j);
+      @if $j > 1 and compare(nth($list, $j), nth($list, $j - 1), $sort-order) {
+        $list: swap($list, $j, $j - 1);
+      }
+    }
+  }
+  @return $list;
+}
+
+@debug sort($list_to_sort);
