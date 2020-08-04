@@ -341,7 +341,7 @@ ul.row {
 }
 
 .row {
-    display: flex;
+  display: flex;
 }
 
 [class*="col-"] {
