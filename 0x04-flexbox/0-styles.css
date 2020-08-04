@@ -344,7 +344,7 @@ ul.row {
   list-style: none;
 }
 
-[class*="col-"] {
+[class*='col-'] {
   padding: 0.5rem;
 }
 
