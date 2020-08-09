@@ -837,8 +837,8 @@ label {
   padding: 0 0 0.5rem;
 }
 
-input[type="text"],
 textarea,
+input[type="text"],
 input[type="email"] {
   position: relative;
   width: 100%;
@@ -855,8 +855,8 @@ input[type="email"] {
   padding-right: 3rem;
 }
 
-input[type="text"]:focus,
 textarea:focus,
+input[type="text"]:focus,
 input[type="email"]:focus {
   border: 0.1rem solid var(--color-grey);
   background-color: var(--color-light-grey);
