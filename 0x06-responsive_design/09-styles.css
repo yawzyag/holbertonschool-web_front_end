@@ -318,6 +318,18 @@ a:active {
   background: var(--color-white);
 }
 
+@media all and (max-width: 480px) {
+  html {
+    font-size: 57%;
+  }
+}
+
+@media all and (min-width: 481px) and (max-width: 767px) {
+  html {
+    font-size: 60%;
+  }
+}
+
 /* Helpers
       ============================= */
 
@@ -437,6 +449,16 @@ ul.row {
 @media all and (max-width: 767px) {
   .navbar-menu {
     display: none;
+    flex: 1;
+  }
+  :root {
+    --nav-item-margin: 0;
+  }
+  .header .nav {
+    flex-direction: column;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height .2s ease-out;
   }
 }
 
@@ -455,6 +477,106 @@ ul.row {
   justify-content: space-between;
   align-items: center;
 }
+
+.header .menu-icon {
+  cursor: pointer;
+  padding: 2.5rem;
+  position: relative;
+  user-select: none;
+  display: none;
+}
+
+.header .menu-icon .navicon {
+  background: var(--color-white);
+  display: block;
+  width: 2rem;
+  height: .2rem;
+  position: relative;
+  transition: background .2s ease-out;
+}
+
+.header .menu-icon .navicon::before,
+.header .menu-icon .navicon::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: var(--color-white);
+  transition: all .2s ease-out;
+}
+
+.header .menu-icon .navicon::before {
+  top: .7rem;
+}
+
+.header .menu-icon .navicon::after {
+  top: -.7rem;
+}
+
+/* menu btn */
+
+.header .menu-btn {
+  display: none;
+}
+
+.menu-btn:checked ~ .navbar-menu{
+  display: block !important;
+}
+
+.menu-btn:checked ~ .navbar-menu .nav {
+  max-height: 100% !important;
+  overflow: inherit !important;
+}
+
+.header .menu-btn:checked + .menu-icon .navicon {
+  background: transparent;
+}
+
+.header .menu-btn:checked + .menu-icon .navicon::before {
+  transform: rotate(-45deg);
+}
+
+.header .menu-btn:checked + .menu-icon .navicon::after {
+  transform: rotate(45deg);
+}
+
+.header .menu-btn:checked + .menu-icon .navicon::before,
+.header .menu-btn:checked + .menu-icon .navicon::after {
+  top: 0;
+}
+
+@media all and (max-width: 767px) {
+  :root {
+    --header-padding: 2rem 0 0;
+  }
+
+  .header {
+    background: var(--color-black);
+  }
+
+  .header-container {
+    flex-wrap: wrap;
+    padding: 0 1.5rem;
+  }
+
+  .header .menu-icon {
+    display: block;
+  }
+}
+
+@media all and (max-width: 480px) {
+  .header-logo {
+    flex-basis: 70%;
+  }
+}
+
+@media all and (min-width: 481px) and (max-width: 767px) {
+  .header-logo {
+    flex-basis: 79%;
+  }
+}
+
 
 /* Footer
       ============================= */
@@ -485,6 +607,19 @@ ul.row {
 
 .social-link > svg {
   fill: var(--text-color);
+}
+
+@media all and (max-width: 767px) {
+  :root {
+    --footer-padding: 5rem 2rem 1rem;
+  }
+
+  .footer .social.nav, .footer .footer-nav {
+    text-align: center;
+  }
+  .social.nav li + li, .footer-nav li + li {
+    padding-left: 2rem;
+  }
 }
 
 /*** 3. SECTION ***/
@@ -571,6 +706,19 @@ ul.row {
   justify-content: center;
   min-height: 35vh;
 }
+
+@media all and (max-width: 767px) {
+  .section-hero {
+    margin: -0.1rem 0;
+  }
+  .hero-homepage {
+    background-position: 85% 0;
+  }
+  .section-hero .section-body {
+    padding: 2rem;
+  }
+}
+
 /* Section Latest news
       ============================= */
 
@@ -670,6 +818,20 @@ ul.row {
 
 .card-work:hover .card-title {
   opacity: 1;
+}
+
+@media all and (max-width: 767px) {
+  .card-work .card-inner {
+    --text-color: var(--color-white);
+    position: relative;
+  }
+  .card-work .card-title {
+    opacity: 1;
+  }
+
+  .card-work .card-title a {
+    padding: 2rem 1rem 0 1rem;
+  }
 }
 
 /* Card SERVICES

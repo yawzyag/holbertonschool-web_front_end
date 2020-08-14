@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "sass": "^1.26.10"
+  },
+  "license": "MIT"
+}
