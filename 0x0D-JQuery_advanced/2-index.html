@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Task 0</title>
+  </head>
+
+  <body>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
+      crossorigin="anonymous"
+    ></script>
+    <script type="application/javascript">
+      const createFamilyTree = () => {
+        let content = "<table><thead><tr>";
+        for (const item of ["Firstname", "Lastname"]) {
+          content += `<th>${item}</th>`;
+        }
+        content += "</tr></thead><tbody>";
+
+        // First row
+        content += "<tr>";
+        for (const item of ["Guillaume", "Salva"]) {
+          content += `<td>${item}</td>`;
+        }
+        content += "</tr>";
+
+        // Second row
+        content += "<tr>";
+        for (const item of ["Paulette", "Salva"]) {
+          content += `<td>${item}</td>`;
+        }
+        content += "</tr>";
+
+        // Thirt row
+        content += "<tr>";
+        for (const item of ["Antoine", "Salva"]) {
+          content += `<td>${item}</td>`;
+        }
+        content += "</tr></tbody></table>";
+
+        $("body").append(content);
+      };
+      createFamilyTree();
+    </script>
+  </body>
+</html>

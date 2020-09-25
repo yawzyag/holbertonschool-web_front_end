@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Task 0</title>
+  </head>
+
+  <body>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
+      crossorigin="anonymous"
+    ></script>
+    <script type="application/javascript">
+      const createFamilyTree = () => {
+        const table = $("<table>");
+        const tbody = $("<tbody>");
+        let tr = $("<tr>");
+
+        for (const item of ["Firstname", "Lastname"]) {
+          tr.append($("<th>").text(item));
+        }
+        table.append($("<thead>").append(tr));
+
+        table.append(tbody);
+
+        tr = $("<tr>");
+        // First row
+        for (const item of ["Guillaume", "Salva"]) {
+          tr.append($("<td>").text(item));
+        }
+
+        table.append(tbody.append(tr));
+
+        tr = $("<tr>");
+        // Second row
+        for (const item of ["Paulette", "Salva"]) {
+          tr.append($("<td>").text(item));
+        }
+
+        table.append(tbody.append(tr));
+
+        tr = $("<tr>");
+        // Thirt row
+        for (const item of ["Antoine", "Salva"]) {
+          tr.append($("<td>").text(item));
+        }
+
+        table.append(tbody.append(tr));
+
+        $("body").append(table);
+      };
+
+      createFamilyTree();
+    </script>
+  </body>
+</html>
