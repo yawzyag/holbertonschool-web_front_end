@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Local storage</title>
+  </head>
+  <body>
+    <script type="application/javascript">
+      const availableItems = ["Shampoo", "Soap", "Sponge", "Water"];
+
+      const addItemToCart = (item = "") => {
+        sessionStorage.setItem(item, true);
+      };
+
+      const createStore = () => {
+        const ul = document.createElement("ul");
+        availableItems.forEach((item) => {
+          const li = document.createElement("li");
+          li.innerHTML = item;
+          li.addEventListener("click", () => addItemToCart(item));
+
+          ul.appendChild(li);
+        });
+        document.body.appendChild(ul);
+      };
+
+      const displayCart = () => {
+        const keys = Object.keys(sessionStorage);
+        let i = 0;
+        availableItems.forEach(item => {
+          if (keys.includes(item)) i++;
+        })
+        if (i) {
+          const p = document.createElement("p");
+          p.innerHTML = `You previously had ${i} items in your cart`;
+          document.body.appendChild(p);
+        }
+      };
+
+      const sessionStorageTest = () => {
+        const test = "test";
+        try {
+          sessionStorage.setItem(test, test);
+          sessionStorage.removeItem(test);
+          return true;
+        } catch (e) {
+          return false;
+        }
+      };
+
+      if (sessionStorageTest() === true) {
+        // available
+        createStore();
+        displayCart();
+      } else {
+        // unavailable
+        alert(
+          "Sorry, your browser does not support Web storage. Try again with a better one"
+        );
+      }
+    </script>
+  </body>
+</html>

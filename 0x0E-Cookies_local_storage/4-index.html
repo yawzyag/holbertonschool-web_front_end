@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cookies & local storage</title>
+    <style>
+      button {
+        border-radius: 5px;
+        border: 1px solid #333;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="formDiv">
+      <h2>Login to the website</h2>
+
+      <input
+        type="text"
+        placeholder="Firstname"
+        name="firstname"
+        id="firstname"
+      />
+      <input type="email" placeholder="Email" name="email" id="email" />
+      <button onclick="setCookiesAndShowWelcomeMessage()" type="submit">
+        Log me in
+      </button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2.2.1/src/js.cookie.min.js"></script>
+
+    <script type="application/javascript">
+      const setCookiesAndShowWelcomeMessage = () => {
+        const firstName = document.getElementById("firstname").value;
+        const email = document.getElementById("email").value;
+        Cookies.set("firstname", firstName, { expires: 10 });
+        Cookies.set("email", email, { expires: 10 });
+        showWelcomeMessageOrForm();
+      };
+
+      const showCookies = () => {
+        const p = document.createElement("p");
+        p.innerHTML = `Email: ${Cookies.get(
+          "email"
+        )} - Firstname: ${Cookies.get("firstname")}`;
+        document.querySelector("body").append(p);
+      };
+
+      const showForm = () => {
+        const welcomeM = document.getElementById("welcome");
+        if (welcomeM) welcomeM.parentNode.removeChild(welcomeM);
+
+        if (!document.getElementById("formDiv")) {
+          const div = document.createElement("div");
+          div.setAttribute("id", "formDiv");
+
+          const h2 = document.createElement("h2");
+          h2.innerHTML = "Login to the website";
+
+          div.appendChild(h2);
+
+          const inputFirstName = document.createElement("input");
+          inputFirstName.setAttribute("type", "text");
+          inputFirstName.setAttribute("placeholder", "Firstname");
+          inputFirstName.setAttribute("name", "firstname");
+          inputFirstName.setAttribute("id", "firstname");
+
+          div.appendChild(inputFirstName);
+
+          const inputEmail = document.createElement("input");
+          inputEmail.setAttribute("type", "email");
+          inputEmail.setAttribute("placeholder", "Email");
+          inputEmail.setAttribute("name", "email");
+          inputEmail.setAttribute("id", "email");
+
+          div.appendChild(inputEmail);
+
+          const button = document.createElement("button");
+          button.setAttribute("type", "submit");
+          button.innerHTML = "Log me in";
+          button.addEventListener("click", setCookiesAndShowWelcomeMessage);
+
+          div.appendChild(button);
+
+          document.body.appendChild(div);
+        } else {
+          document.getElementById("formDiv").style.display = "block";
+        }
+      };
+
+      const hideForm = () => {
+        document.getElementById("formDiv").style.display = "none";
+      };
+
+      const deleteCookiesAndShowForm = () => {
+        Cookies.remove("firstname");
+        Cookies.remove("email");
+        showForm();
+      };
+
+      const showWelcomeMessageOrForm = () => {
+        const userName = Cookies.get("firstname");
+        if (userName) {
+          const h1 = document.createElement("h1");
+          h1.setAttribute("id", "welcome");
+          const italic = document.createElement("a");
+          italic.innerHTML = "(logout)";
+          italic.style.fontWeight = "normal";
+          italic.style.fontStyle = "italic";
+          italic.style.marginLeft = "10px";
+
+          italic.addEventListener("click", deleteCookiesAndShowForm);
+
+          h1.innerHTML = `Welcome ${userName}`;
+          h1.appendChild(italic);
+          document.body.innerHTML = "";
+          document.body.appendChild(h1);
+        } else {
+          showForm();
+        }
+      };
+      showWelcomeMessageOrForm();
+    </script>
+  </body>
+</html>
