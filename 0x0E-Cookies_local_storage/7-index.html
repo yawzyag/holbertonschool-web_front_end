@@ -87,8 +87,8 @@
         const cart = JSON.parse(sessionStorage.getItem("cart"));
         if (cart) {
           delete cart[item];
+          sessionStorage.setItem("cart", JSON.stringify(cart));
         }
-        sessionStorage.setItem("cart", JSON.stringify(cart));
         displayCart();
       };
 
